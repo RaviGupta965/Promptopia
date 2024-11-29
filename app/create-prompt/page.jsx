@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Form from '@components/form';
+import Form from '@components/Form';
 const CreatePromptPage = () => {
     const router=useRouter();
     const {data:session}=useSession();
