@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState,useEffect } from "react";
 import {signIn,signOut,useSession,getProviders} from 'next-auth/react'
-const nav = () => {
+const Nav = () => {
   const {data:session}=useSession();
   const [provider,setprovider]=useState(null);
   const [toggledropdown,settoggledropdown]=useState(false);
@@ -82,4 +82,4 @@ const nav = () => {
   )
 }
 
-export default nav
+export default Nav
