@@ -16,7 +16,7 @@ const PromptCardList=({data,handleTagClick})=>{
     </div>
   );
 };
-const feed = () => {
+const Feed = () => {
   const [searchText,setsearchText]=useState('');
   const [posts,setposts]=useState([]);
 
@@ -64,4 +64,4 @@ const feed = () => {
   )
 }
 
-export default feed;
+export default Feed;
