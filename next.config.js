@@ -8,6 +8,7 @@ const nextConfig = {
     domains: ['lh3.googleusercontent.com'], // No change needed here.
   },
   webpack(config) {
+    
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,

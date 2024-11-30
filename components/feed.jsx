@@ -2,7 +2,7 @@
 
 import { useState,useEffect } from "react";
 
-import Promptcard from "./Promptcard.jsx";
+import Promptcard from "./Promptcard";
 
 
 const PromptCardList=({data,handleTagClick})=>{
@@ -23,6 +23,7 @@ const Feed = () => {
   const fetchPost=async ()=>{
     const response = await fetch ('/api/prompt');
     const res=await response.json();
+    console.log(require.resolve('@components/Profile.jsx'));
     setposts(res);
   }
 
