@@ -1,27 +1,18 @@
-const path = require('path')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    appDir: true, // This is fine for enabling the app directory.
   },
-  serverExternalPackages: ["mongoose"], // Corrected package name for server-side packages.
+  serverExternalPackages: ["mongoose"], // Corrected from `serverComponentsExternalPackages`.
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    domains: ['lh3.googleusercontent.com'], // No change needed here.
   },
   webpack(config) {
-    // Add top-level await experiment support
+    
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,
     };
-
-    // Ensure alias resolution works
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@components': path.resolve(__dirname, 'components'), // Ensure @components resolves correctly
-    };
-
     return config;
   },
 };
