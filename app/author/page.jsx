@@ -1,5 +1,5 @@
 'use client'
-
+import React,{ Suspense } from "react";
 import { useState , useEffect } from "react";
 import { useSession  } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -53,5 +53,10 @@ const MyProfile = () => {
     </div>
   )
 }
+const SuspenseWrappedAuthorPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <MyProfile />
+  </Suspense>
+);
 
-export default MyProfile;
+export default SuspenseWrappedAuthorPage;
