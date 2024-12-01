@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": "22.x"
+    "node": "16.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
