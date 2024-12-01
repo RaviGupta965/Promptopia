@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import GoogleProvider from 'next-auth/providers/google'
 import { connecttoDB } from "@utils/database.js";
 import User from '@models/user.model.js'
-import bcrypt from "bcryptjs"; 
 
 const handler=NextAuth({
     providers:[
