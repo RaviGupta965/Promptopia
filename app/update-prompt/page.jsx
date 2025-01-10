@@ -1,72 +1,90 @@
 'use client';
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { useRouter,useSearchParams } from 'next/navigation';
+
+import React, { Suspense, useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Form from '../../components/Form';
 
-const EditPromptPage = () => {
-    const router=useRouter();
-    const searchparams=useSearchParams();
-    const promptid=searchparams.get('id');
+const EditPromptContent = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const promptId = searchParams ? searchParams.get('id') : null;
 
-    const [submitting,setsubmitting]=useState(false);
-    const [post,setpost]=useState({
-        prompt:'',
-        tag:'',
-    })
-    
-    
-    const fetchdata=async()=>{
-      const res=await  fetch(`/api/prompt/${promptid}`);
-      const data=await res.json();
+  const [submitting, setSubmitting] = useState(false);
+  const [post, setPost] = useState({
+    prompt: '',
+    tag: '',
+  });
 
-      setpost({
-        prompt:data.prompt,
-        tag:data.tag
-      })
+  const fetchData = async () => {
+    if (!promptId) return;
+
+    try {
+      const res = await fetch(`/api/prompt/${promptId}`);
+      if (!res.ok) {
+        throw new Error('Failed to fetch prompt data');
+      }
+      const data = await res.json();
+
+      setPost({
+        prompt: data.prompt,
+        tag: data.tag,
+      });
+    } catch (error) {
+      console.error('Error fetching prompt data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [promptId]);
+
+  const updatePrompt = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    if (!promptId) {
+      alert('Prompt ID is missing');
+      return;
     }
 
-    useEffect(()=>{
-      fetchdata();
-    },[promptid])
+    try {
+      const response = await fetch(`/api/prompt/${promptId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          prompt: post.prompt,
+          tag: post.tag,
+        }),
+      });
 
-
-    const updatePrompt=async (e)=>{
-        e.preventDefault();
-        setsubmitting(true);
-
-        if(!promptid)  return  alert('Prompt ID is missing')
-        try {
-            const response = await fetch(`/api/prompt/${promptid}`,
-                {
-                    method:'PATCH',
-                    body: JSON.stringify({
-                        prompt:post.prompt,
-                        tag:post.tag,
-                    })
-                }
-            );
-
-            if(response.ok){
-                router.push('/');
-            }
-
-        } catch (error) {
-            console.log(error);
-        }
-        finally{
-            setsubmitting(false);
-        }
+      if (response.ok) {
+        router.push('/');
+      }
+    } catch (error) {
+      console.error('Error updating prompt:', error);
+    } finally {
+      setSubmitting(false);
     }
+  };
 
   return (
-    <Form 
-        type="Edit"
-        post={post}
-        setpost={setpost}
-        submitting={submitting}
-        handleSubmit={updatePrompt}
+    <Form
+      type="Edit"
+      post={post}
+      setPost={setPost}
+      submitting={submitting}
+      handleSubmit={updatePrompt}
     />
-  )
-}
+  );
+};
+
+const EditPromptPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditPromptContent />
+    </Suspense>
+  );
+};
+
 export default EditPromptPage;
+
+
