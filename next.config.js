@@ -1,34 +1,19 @@
-const path = require('path');
-
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ["mongoose"],
+  },
   images: {
     domains: ['lh3.googleusercontent.com'],
   },
-  webpack(config, { isServer }) {
-    // Add alias for @components
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@components': path.resolve(__dirname, 'components'),
-    };
-
-    // Add fallback for missing node modules on Vercel (e.g., fs module)
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        path: false,
-        os: false,
-      };
-    }
-
+  webpack(config) {
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,
-    };
+    }
+    return config
+  }
+}
 
-    return config;
-  },
-};
-
-module.exports = nextConfig;
+module.exports = nextConfig
 
