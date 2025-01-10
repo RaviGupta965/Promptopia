@@ -1,3 +1,5 @@
+const path = require('path'); // Add this line
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: ["mongoose"], // Corrected location for external packages
