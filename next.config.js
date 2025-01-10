@@ -1,19 +1,20 @@
-const path = require('path'); // Add this line
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  serverExternalPackages: ["mongoose"], // Corrected location for external packages
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ["mongoose"],
+  },
   images: {
-    domains: ['lh3.googleusercontent.com'], // Correct image domain
+    domains: ['lh3.googleusercontent.com'],
   },
   webpack(config) {
     config.experiments = {
       ...config.experiments,
-      topLevelAwait: true, // Enable top-level await
-    };
-    return config;
-  },
-};
+      topLevelAwait: true,
+    }
+    return config
+  }
+}
 
 module.exports = nextConfig;
 
