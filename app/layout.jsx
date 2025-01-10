@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/global.css';
-import Nav from '@components/Nav'
-import Provider from '@components/Provider'
+import Nav from '../components/Nav'
+import Provider from '../components/Provider'
 
 export const metadata = {
     title:"Promptopia",
