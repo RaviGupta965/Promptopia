@@ -1,5 +1,5 @@
 import React from 'react'
-import Promptcard from './Promptcard.jsx'
+import Promptcard from './PromptCard.jsx'
 const Profile = ({data,name,desc,handleEdit,handleDelete}) => {
   return (
     <section className='w-full'>
