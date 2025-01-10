@@ -2,7 +2,6 @@
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
-  appDir: true, // Top-level configuration for Next.js app directory
   serverExternalPackages: [], // Updated as per Next.js requirements
   images: {
     domains: ['lh3.googleusercontent.com'], // Allowlisted image domain
