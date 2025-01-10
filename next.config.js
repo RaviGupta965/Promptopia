@@ -7,13 +7,14 @@ const nextConfig = {
   images: {
     domains: ['lh3.googleusercontent.com'],
   },
-  // webpack(config) {
-  //   config.experiments = {
-  //     ...config.experiments,
-  //     topLevelAwait: true,
-  //   }
-  //   return config
-  // }
+  webpack(config) {
+    // Ensure experiments property exists before modifying it
+    if (!config.experiments) {
+      config.experiments = {};
+    }
+    config.experiments.topLevelAwait = true;
+    return config;
+  },
 }
 
 module.exports = nextConfig;
