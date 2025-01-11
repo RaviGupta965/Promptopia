@@ -20,7 +20,8 @@
     "node": "^20.18.1",
     "path": "^0.12.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "webpack": "^5.97.1"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
