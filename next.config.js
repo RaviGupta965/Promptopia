@@ -29,7 +29,7 @@ module.exports = {
 
     // Log webpack config for debugging purposes in build logs
     if (!isServer) {
-      console.log('Webpack configuration:', config);
+      // console.log('Webpack configuration:', config);
     }
 
     return config;
