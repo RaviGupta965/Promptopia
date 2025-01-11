@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Profile from '@Components/Profile';
+import Profile from '@components/Profile';
 
 const MyProfileContent = () => {
   const router = useRouter();
