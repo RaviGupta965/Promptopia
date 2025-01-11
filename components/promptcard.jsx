@@ -1,10 +1,10 @@
 'use client'
-import React from 'react'
-import { useState } from 'react'
-import Image from 'next/image'
-import { useSession } from 'next-auth/react'
-import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/navigation'
+import React from 'react';
+import { useState } from 'react';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 const PromptCard = ({post,handleTagClick,handleEdit,handleDelete}) => {
   const [copied,setcopied]=useState("");
   const {data:session}=useSession();
