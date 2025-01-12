@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "engines": {
-    "node": "22.x"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "mongodb": "^6.10.0",
